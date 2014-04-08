@@ -2,7 +2,7 @@ package test
 
 object TestZipBy extends Application {
 
-  import com.xarxaire.griba.ZipBy._
+  import com.xarxaire.griba.ZipBy.toZipBy
   
   val li= (1 to 3).toList
   val li2 = li
