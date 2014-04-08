@@ -8,7 +8,8 @@ object ZipBy {
   implicit def toZipBy[A](col: GenIterable[A]) = new {
 
     /**
-     * implementation adapted from Scala.collection library GenIterable
+     * implementation adapted from Scala.collection library GenIterable.zip()
+     *
      * @param f curried function to zip with
      * @param that 
      * @return a collection of the same type with the f-zipped values
