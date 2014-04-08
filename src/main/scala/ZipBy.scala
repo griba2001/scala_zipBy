@@ -5,10 +5,12 @@ object ZipBy {
   import scala.collection.GenIterable
   import scala.collection.generic.CanBuildFrom
 
+  /** 
+   * zipBy method injection
+   */
   implicit def toZipBy[A](col: GenIterable[A]) = new {
 
-    /** zipBy method injection
-     *
+    /** 
      * implementation adapted from Scala.collection library GenIterable.zip()
      *
      * @param f curried function to zip with
