@@ -3,7 +3,7 @@ package com.xarxaire.griba
 object ZipBy {
 
   import scala.collection.GenIterable
-  import scala.collection.generic.CanBuildFrom
+  import scala.collection.mutable.ListBuffer
 
   /** 
    * zipBy method injection
@@ -17,13 +17,13 @@ object ZipBy {
      * @param that 
      * @return a collection of the same type with the f-zipped values
      */
-    def zipBy[A1 >: A, B, C, That] (f: A1 => B => C) (that: GenIterable[B])(implicit bf: CanBuildFrom[col.type, C, That]): That = {
-        val b = bf(col.repr.asInstanceOf[col.type]) 
+    def zipBy[A1 >: A, B, C] (f: A1 => B => C) (that: GenIterable[B]): ListBuffer[C] = {
+        val b : ListBuffer[C] = ListBuffer.empty
         val these = col.iterator
         val those = that.iterator
         while (these.hasNext && those.hasNext)
           b += (f(these.next) (those.next))
-        b.result
+        b
       }
   }
 }
