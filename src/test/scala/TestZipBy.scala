@@ -1,8 +1,6 @@
 package test
 
 import org.scalatest.junit.JUnitSuite
-// import org.scalatest.junit.AssertionsForJUnit
-// import org.scalatest.junit.Assert._
 import _root_.org.junit.Test
 import _root_.org.junit.Before
 
