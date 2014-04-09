@@ -13,6 +13,6 @@ object TestZipBy extends Application {
   val res1 = li.zipBy (sumInts _) (li2)
   val res2 = li.zipBy (sumInts2.curried) (li2)
 
-  println( res1)  
-  println( res2)  
+  println( res1.toList)  
+  println( res2.toList)  
 }
