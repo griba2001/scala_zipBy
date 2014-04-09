@@ -15,10 +15,10 @@ object ZipBy {
      *
      * @param f curried function to zip with
      * @param that 
-     * @return a collection of the same type with the f-zipped values
+     * @return a ListBuffer with the f-zipped values
      */
     def zipBy[A1 >: A, B, C] (f: A1 => B => C) (that: GenIterable[B]): ListBuffer[C] = {
-        val b : ListBuffer[C] = ListBuffer.empty
+        val b = ListBuffer.empty[C]
         val these = col.iterator
         val those = that.iterator
         while (these.hasNext && those.hasNext)
