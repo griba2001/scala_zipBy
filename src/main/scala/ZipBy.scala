@@ -1,15 +1,16 @@
 package com.xarxaire.griba
 
+/** 
+  * zipBy method injection
+  *
+  * zip methods implementation adapted from Scala.collection library GenIterable.zip()
+  */
 object ZipBy {
 
   import scala.collection.GenIterable
 
-  /** 
-   * zipBy method injection
-   *
-   * zip methods implementation adapted from Scala.collection library GenIterable.zip()
-   */
-  implicit def toZipBy[A](col: GenIterable[A]) = new {
+
+  class ToZipBy[A](col: GenIterable[A]) {
 
     /** 
      *
@@ -17,7 +18,7 @@ object ZipBy {
      * @param that 
      * @return an Iterator with the f-zipped values
      */
-    def zipBy[A1 >: A, B, C] (f: A1 => B => C) (that: GenIterable[B]) = new Iterator[C] {
+    def zipBy[A1 >: A, B, C] (f: A1 => B => C) (that: GenIterable[B]): Iterator[C] = new Iterator[C] {
 
         private val these = col.iterator
         private val those = that.iterator
@@ -27,7 +28,7 @@ object ZipBy {
         def next() = f (these.next) (those.next)
       }
 
-    def zipAllBy[A1 >: A, B, C] (f: A1 => B => C) (that: GenIterable[B], thisElem: A1, thatElem: B) = new Iterator[C] {
+    def zipAllBy[A1 >: A, B, C] (f: A1 => B => C) (that: GenIterable[B], thisElem: A1, thatElem: B): Iterator[C] = new Iterator[C] {
 
         private val these = col.iterator
         private val those = that.iterator
@@ -42,4 +43,6 @@ object ZipBy {
              } 
       }
   }
+
+  implicit def toZipBy[A](col: GenIterable[A]) = new ToZipBy (col)
 }
