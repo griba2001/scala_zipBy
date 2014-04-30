@@ -28,7 +28,7 @@ object ZipBy {
         def next() = f (these.next) (those.next)
       }
 
-    def zipAllBy[A1 >: A, B, C] (f: A1 => B => C) (that: GenIterable[B], thisElem: A1, thatElem: B): Iterator[C] = new Iterator[C] {
+    def zipAllBy[A1 >: A, B, C] (f: A1 => B => C) (that: GenIterable[B], thisElem: A, thatElem: B): Iterator[C] = new Iterator[C] {
 
         private val these = col.iterator
         private val those = that.iterator

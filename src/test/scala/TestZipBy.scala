@@ -1,8 +1,8 @@
 package test
 
 import org.scalatest.junit.JUnitSuite
-import _root_.org.junit.Test
-import _root_.org.junit.Before
+import org.junit.Test
+import org.junit.Before
 
 class SimpleSuite extends JUnitSuite {
 
